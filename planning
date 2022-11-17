@@ -1,10 +1,48 @@
+References
+
+const hat = "^";
+const hole = "O";
+const fieldCharacter = "░";
+const pathCharacter = "*";
+
+
+Initialization:
+
+Starter field using the field they showed
+
+this.locationY = 0
+this.locationX = 0
+
+Location Y refers to how far 'down' we have gone - corrsponds to which of the arrays we are in inside outer array
+Location X refers to how far 'accross' we have gone - corresponds to which element of inner array we are in
+
+E.g.
+
+[
+  ["*", "░", "O"],
+  ["░", "O", "░"],
+  ["░", "^", "░"],
+]
+
+Y=0 X= 0 is our starting *
+Move is down 1 - increment Y by + 1
+Y=1 X=0 corresponds to field[1][0]
+Move is 1 to right - increment X by +1
+Y=1 X=1 corresponds to field[1][1]
+
+Conversely up is Y - 1 and left is X - 1
+
 Run Game Method: 
 - while loop 
     - start with playing set to true 
     - while playing:
-        - print the map
-        - ask the question (for which direction) 
+        - print the map (print method)
+        - ask the question (for which direction) (askQuestion)
         - first check is for in bounds - if set playing to false. console log ('out of bounds'). break
         - next check for is hole - if it is set playing to false. console log ('fell in hole'). break
         - next check for is hat - if it is set playing to false. console.log ('you found it!). break
         - finally is all those fail, update this.field[this.locationY][this.locationX] = pathCharacter
+
+askQuestion Method:
+ const move = prompt('Which way?').toUpperCase()
+ switch (move)

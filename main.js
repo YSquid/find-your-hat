@@ -17,8 +17,24 @@ class Field {
     console.log(displayString)
   }
 
-  startGame() {
-
+  askQuestion() {
+    const move = prompt('Which Way?').toUpperCase()
+    switch(move) {
+      case 'U':
+        this.locationY -= 1;
+        break;
+      case 'D':
+        this.locationY += 1;
+        break;
+      case 'L':
+        this.locationX -= 1;
+        break;
+      case 'R':
+        this.locationX += 1;
+        break;
+      default:
+        console.log('Enter valid direction: U, D, L, R')
+    }
   }
 
 
