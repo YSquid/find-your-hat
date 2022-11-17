@@ -57,10 +57,14 @@ class Field {
   isHole() {
     return this.field[this.locationY][this.locationX] === hole;
   }
+
+  isHat() {
+    return this.field[this.locationY][this.locationX] === hat;
+  }
 }
 const myField = new Field([
   ["*", "O", "O"],
-  ["░", "O", "░"],
+  ["^", "O", "░"],
   ["░", "^", "░"],
 ]);
 
@@ -69,4 +73,6 @@ myField.askQuestion();
 console.log(myField.locationY);
 console.log(myField.locationX);
 console.log(myField.isHole());
+console.log(myField.isHat());
+
 
