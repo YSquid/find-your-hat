@@ -11,15 +11,17 @@ class Field {
   }
 
   print() {
-    const output = []
-    this.field.forEach((row) => {
-        for (const i in row) {
-            output.push(row[i])
-        }
-        output.push('\n')
-    })
-    console.log(output.join(''))
+    const displayString = this.field.map((row) => {
+      return row.join('')
+    }).join('\n')
+    console.log(displayString)
   }
+
+  startGame() {
+
+  }
+
+
 }
 
 const myField = new Field([
