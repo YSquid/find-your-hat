@@ -50,12 +50,16 @@ class Field {
     ) {
       return false;
     } else {
-      return true
+      return true;
     }
+  }
+
+  isHole() {
+    return this.field[this.locationY][this.locationX] === hole;
   }
 }
 const myField = new Field([
-  ["*", "░", "O"],
+  ["*", "O", "O"],
   ["░", "O", "░"],
   ["░", "^", "░"],
 ]);
@@ -64,4 +68,5 @@ myField.print();
 myField.askQuestion();
 console.log(myField.locationY);
 console.log(myField.locationX);
-console.log(myField.isInbounds())
+console.log(myField.isHole());
+
