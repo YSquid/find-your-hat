@@ -46,3 +46,9 @@ Run Game Method:
 askQuestion Method:
  const move = prompt('Which way?').toUpperCase()
  switch (move)
+
+ isInbounds method
+    if locationY or locationX are < 0 return false
+    if locationY > field.length - 1 return false
+    if locationX > field[0].length - 1 return false
+    else return true
