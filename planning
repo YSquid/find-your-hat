@@ -1,0 +1,10 @@
+Run Game Method: 
+- while loop 
+    - start with playing set to true 
+    - while playing:
+        - print the map
+        - ask the question (for which direction) 
+        - first check is for in bounds - if set playing to false. console log ('out of bounds'). break
+        - next check for is hole - if it is set playing to false. console log ('fell in hole'). break
+        - next check for is hat - if it is set playing to false. console.log ('you found it!). break
+        - finally is all those fail, update this.field[this.locationY][this.locationX] = pathCharacter
