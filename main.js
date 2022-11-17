@@ -61,18 +61,34 @@ class Field {
   isHat() {
     return this.field[this.locationY][this.locationX] === hat;
   }
+
+  runGame() {
+    let playing = true;
+    while (playing) {
+      this.print();
+      this.askQuestion();
+      if (!this.isInbounds()) {
+        playing = false;
+        console.log('You went out of bounds!')
+        break;
+      } else if (this.isHole()) {
+        playing = false;
+        console.log('You fell in a hole!')
+        break;
+      } else if (this.isHat()) {
+        playing = false;
+        console.log('You found it!')
+        break;
+      } else {
+        this.field[this.locationY][this.locationX] = pathCharacter
+      }
+    }
+  }
 }
 const myField = new Field([
-  ["*", "O", "O"],
-  ["^", "O", "░"],
+  ["*", "░", "O"],
+  ["░", "O", "░"],
   ["░", "^", "░"],
 ]);
 
-myField.print();
-myField.askQuestion();
-console.log(myField.locationY);
-console.log(myField.locationX);
-console.log(myField.isHole());
-console.log(myField.isHat());
-
-
+myField.runGame()
