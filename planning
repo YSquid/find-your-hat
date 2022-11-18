@@ -55,15 +55,17 @@ askQuestion Method:
 
 Generate field Method:
 
-- Method takes arguments of height (rows) and width (columns) and % holes. 
-- First need to decide what row and column the hat is in - use a Math.Random that is within the range of the field
-- I.e. if the field is 10 x 10, there are 100 cells (0-99), so hatIndex = Math.Floor(Math.random() * 101). While hatIndex = 0, roll new index (to disallow Index 0)
-- Have an empty array called field
-- Loop through that field and push and number of empty arrays equal to height - 1
-- Create a tracker variable for the indexes we have filled - increments each time we push an element
-- Do a forEach on each Array within the field array and run a loop equal to width - 1
+- Method takes arguments of height (rows) and width (columns) and % holes.  DONE
+- Limit % holes to 0.4. height and width both need to be 3 or more DONE
+- First need to decide what index the hat is in - use a Math.Random that is within the range of the field - DONE
+- I.e. if the field is 10 x 10, there are 100 cells (0-99), so hatIndex = Math.Floor(Math.random() * 101(h * w + 1)). DONE
+- Have an empty array called field - DONE
+- Loop through that field and push and number of empty arrays equal to height - 1 DONE
+- Create a tracker variable for the indexes we have filled - increments each time we push an element - DONE
+- Do a forEach on each Array within the field array and run a loop equal to width - 1 - DONE
 - on each iteration:
- - if tracker === hatIndex, push(hat)
- - else if Math.random() < %holes, push(hole)
- - else push(fieldCharacter)
+ -if tracker === 0, push(pathCharacter) - DONE
+ - if tracker === hatIndex, push(hat) - DONE
+ - else if Math.random() < %holes, push(hole) - DONE
+ - else push(fieldCharacter) - DONE
  - tracker += 1
