@@ -13,12 +13,16 @@ class Field {
   }
 
   print() {
-    const displayString = this.field
-      .map((row) => {
-        return row.join("");
-      })
-      .join("\n");
-    console.log(displayString);
+    try {
+      const displayString = this.field
+        .map((row) => {
+          return row.join("");
+        })
+        .join("\n");
+      console.log(displayString);
+    } catch {
+      throw new Error('Error creating field')
+    }
   }
 
   askQuestion() {
@@ -69,67 +73,61 @@ class Field {
       this.askQuestion();
       if (!this.isInbounds()) {
         playing = false;
-        console.log('You went out of bounds!')
+        console.log("You went out of bounds!");
         break;
       } else if (this.isHole()) {
         playing = false;
-        console.log('You fell in a hole!')
+        console.log("You fell in a hole!");
         break;
       } else if (this.isHat()) {
         playing = false;
-        console.log('You found it!')
+        console.log("You found it!");
         break;
       } else {
-        this.field[this.locationY][this.locationX] = pathCharacter
+        this.field[this.locationY][this.locationX] = pathCharacter;
       }
     }
   }
 
-  generateField(height, width, percentHoles) {
+  static generateField(height, width, percentHoles) {
     //check for % holes within range
     if (percentHoles > 0.4) {
-      console.log('Set percentHoles to <= 0.4')
-      return
+      console.log("Set percentHoles to <= 0.4");
+      return;
     }
     //check for height and width within range
     if (height < 3 || width < 3) {
-      console.log('Set height to >= 3 and width to >= 3')
-      return
+      console.log("Set height to >= 3 and width to >= 3");
+      return;
     }
 
-    const hatIndex = Math.floor(Math.random() * (height * width) + 1)
+    const hatIndex = Math.floor(Math.random() * (height * width) + 1);
 
-    const field = []
+    const field = [];
     //create the rows for the field
     for (let i = 0; i < height; i++) {
-      field.push([])
+      field.push([]);
     }
 
     //fill in each row
-    let tracker = 0
+    let tracker = 0;
     field.forEach((row) => {
       for (let j = 0; j < width; j++) {
         if (tracker === 0) {
-          row.push(pathCharacter)
+          row.push(pathCharacter);
         } else if (tracker === hatIndex) {
-          row.push(hat)
+          row.push(hat);
         } else if (Math.random() < percentHoles) {
-          row.push(hole)
+          row.push(hole);
         } else {
-          row.push(fieldCharacter)
+          row.push(fieldCharacter);
         }
-        tracker += 1
+        tracker += 1;
       }
-    })
-    this.field = field
-    console.log(field)
-    console.log(tracker)
+    });
+    return field;
   }
-
 }
-const myField = new Field(Field.generateField(3,3, 0.3));
+const myField = new Field(Field.generateField(10, 10, 0.3));
 
-myField.print()
-
-// myField.runGame()
-// myField.generateField(5, 4, 0.2)
+myField.runGame();
